@@ -1,6 +1,7 @@
 const express = require('express');
 
-const emojis = require('./emojis');
+const profile = require('./profileControl/profile');
+
 
 const router = express.Router();
 
@@ -10,6 +11,6 @@ router.get('/', (req, res) => {
   });
 });
 
-router.use('/emojis', emojis);
+router.use('/profile', profile);
 
 module.exports = router;
