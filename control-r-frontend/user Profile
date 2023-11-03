@@ -1,0 +1,11 @@
+export default function userProfile() {
+return (
+    <div>
+      <label>User Profile</label>
+      <input className="Full Name"> </input>
+      <input className = "Email address"> </input>
+      <input className = "Date Of Birth"> </input>
+      <input className = "Username"> </input>
+    </div>
+);
+}
