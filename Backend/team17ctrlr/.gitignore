@@ -71,3 +71,7 @@ typings/
 
 # Serverless directories
 .serverless
+
+#Database Key
+.ctrl-r-team17-firebase-adminsdk-bnuam-5257d7ed3b.json
+
