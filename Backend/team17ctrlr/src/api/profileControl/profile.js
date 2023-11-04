@@ -8,7 +8,7 @@ const editProfile = require('./editProfile');
 
 const getProfile = require('./getProfile');
 
-
+//Main hub to create edit and get profile
 router.use('/createProfile', createProfile);
 router.use('/editProfile', editProfile);
 router.use('/getProfile', getProfile);

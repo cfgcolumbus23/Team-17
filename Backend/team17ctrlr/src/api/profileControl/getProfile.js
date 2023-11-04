@@ -46,6 +46,7 @@ router.get('/:uid', (req, res) =>   {
 
 
     }
+    //Retrieve Users from database
     admin.app().firestore().collection('Users').doc(uid).get().then((snapshot) => {
         console.log("Document successfully retrieved!");
 
