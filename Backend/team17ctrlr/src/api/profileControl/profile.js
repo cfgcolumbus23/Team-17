@@ -6,11 +6,12 @@ const createProfile = require('./createProfile');
 
 const editProfile = require('./editProfile');
 
-// const getProfile = require('./profileControl/getProfile');
+const getProfile = require('./getProfile');
 
 
 router.use('/createProfile', createProfile);
 router.use('/editProfile', editProfile);
+router.use('/getProfile', getProfile);
 
 router.get('/', (req, res) => {
     res.json({
