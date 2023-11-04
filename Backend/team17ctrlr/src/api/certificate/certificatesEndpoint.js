@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
         res.send("Error: uid is undefined");
         return;
     }
+    //Verify that the Collections were created succesfully
     admin.app().firestore().collection('Collections').doc(uid).set(data).then((snapshot) => {
         console.log("Document successfully created!");
 
@@ -38,7 +39,7 @@ router.post('/generate-certificate', (req, res) => {
 
   const name = req.body.name;
 
-
+  //Use API to create generate certifications to be used by front end, body can be changed
     fetch("https://api.bannerbear.com/v2/images", {
   method: "POST",
   body: JSON.stringify({
@@ -96,6 +97,7 @@ router.post('/generate-certificate', (req, res) => {
   headers: {
     "Content-type": "application/json; charset=UTF-8"
   }
+//Error message in case response error
 }).then(response => {
   res.send(response.json());
 }).catch(err => {
