@@ -10,6 +10,7 @@ export default function Pretest() {
             uid: authentication.currentUser.uid,
             certification: 1
         }
+        console.log(data)
         var response = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/requestVerification`, {
             method: "POST",
             headers: {
@@ -18,6 +19,7 @@ export default function Pretest() {
             },
             body: JSON.stringify(data)
         })
+        console.log(response)
     }
     return (
         <div className="flex w-full h-full justify-center items-center">

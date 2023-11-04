@@ -5,6 +5,7 @@ const router = express.Router();
 var admin = require("firebase-admin");
 
 router.post('/requestVerification', (req, res) => { 
+    console.log("request")
     var uid = req.body.uid
     var certificationID = req.body.certificationID
 
