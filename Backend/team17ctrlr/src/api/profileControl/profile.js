@@ -6,9 +6,7 @@ const createProfile = require('./createProfile');
 
 const editProfile = require('./editProfile');
 
-const getProfile = require('./getProfile.js');
-
-// const getProfile = require('./profileControl/getProfile');
+const getProfile = require('./getProfile');
 
 
 router.use('/createProfile', createProfile);
