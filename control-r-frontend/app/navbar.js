@@ -113,7 +113,7 @@ export default function App() {
                   : "foreground"
               }
               className="w-full"
-              href="#"
+              href={item=="Profile" ? "/userProfile" : item.toLowerCase()}
               size="lg"
             >
               {item}
