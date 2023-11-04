@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 var admin = require("firebase-admin");
-
+//get method for certifications for each of the users
 router.get('/getCertifications', async (req, res) => {
     
     try {
