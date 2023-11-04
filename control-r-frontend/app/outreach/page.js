@@ -13,13 +13,14 @@ export default function App() {
     return (
 
 
-        <div class="bg-gray h-screen">
+        <div class="bg-black h-screen">
             <div class="bg-gray text-black p-15">
 
 
+                 <p class="text-center text-xl font-bold text-white">Admin View</p>
+                 <p class ="text-base text-center text-md font-bold text-white">Verify the Students</p>
 
-                <p class="text-xl font-bold">Admin View</p>
-                <p class ="text-base">Verify the Students</p>
+        
 
                 <div class="p-4">
                     <div class="bg-white border border-gray-300 rounded-lg p-4 shadow-md mr-20 ">
