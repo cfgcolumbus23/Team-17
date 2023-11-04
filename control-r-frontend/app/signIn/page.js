@@ -5,10 +5,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
+import { useRouter } from 'next/navigation';
+
 
 export default function SignUp() {
   var [email, setEmail] = useState("")
   var [password, setPassword] = useState("")
+const router = useRouter();
+
 
   var onChangeEmail = (e) => {
     setEmail(e.target.value)
@@ -17,25 +21,24 @@ export default function SignUp() {
   var onChangePassword = (e) => {
     setPassword(e.target.value)
   }
-
+  console.log(authentication)
   var signIn = async () => {
     signInWithEmailAndPassword(authentication, email, password).then(async (userCredential) => {
       const userID = userCredential.user;
-      var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/getUser/${userID.uid}`)
+      var url = `http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/profile/getProfile/${userID.uid}`
+      var data = await fetch(url)
       var json = await data.json()
-      console.log(userID.uid)
-      console.log(firebase.auth().currentUser)
+
+      router.replace('/pretest');
+  
       return json
     })
     .catch((error) => {
+      console.log("invalid password")
       const errorCode = error.code;
       const errorMessage = error.message;
       // ..
     });
-
-
-    
-    
   }
 
   return (

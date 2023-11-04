@@ -6,6 +6,12 @@ const points = require ('./incentiveControl/incentive');
 const certificate = require('./certificate/certificatesEndpoint');
 
 const certifications = require('./certifications')
+const adminReports = require('./AdminReportsEndpoint')
+
+
+const leaderboard = require('./leaderboardControl/leaderboard');
+
+const verify = require('./certificate/verify')
 
 const router = express.Router();
 
@@ -19,6 +25,14 @@ router.use('/profile', profile);
 router.use('/incentive', points);
 
 router.use('/certificate', certificate);
+
+router.use('/adminReport', adminReports);
+
+
+
+router.use('/leaderboard', leaderboard);
+
+router.use('/verify', verify)
 
 router.use("/certifications", certifications)
 

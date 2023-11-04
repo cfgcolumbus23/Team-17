@@ -24,6 +24,7 @@ export default function UserProfile() {
     setUsername(e.target.value);
   };
 
+  
   {/* Submit function that is going to take all of the state variables
     and pass them into an API request e.g fetch("/path")   */}
   return (
@@ -75,5 +76,4 @@ export default function UserProfile() {
       }
     </div>
   );
-}
 }
