@@ -49,8 +49,8 @@ export default function SignUp() {
           },
         body: JSON.stringify({"uid":user.uid, "data":userData}),
     })
-    router.replace('/pretest');
-
+    localStorage.setItem('loggedIn', true)
+    router.replace('./pretest');
     })
     .catch((error) => {
       console.log(error)
