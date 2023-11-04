@@ -4,9 +4,13 @@ export default function userProfile() {
 return (
     <div>
       <label>User Profile</label>
+      <Input className="my-4" type="name" label="Name" value={name} onChange={onChangeName}></Input>
       <input className="flex p-5" placeHolder = "Full Name:"> </input>
+      <Input className="my-4" type="email" label="Email" value={email} onChange={onChangeEmail}></Input>
       <input className "flex p-5" placeHolder = "Email address:"> </input>
+      <Input className="my-4" type="date" label="Date" value={date} onChange={onChangeDate}></Input>
       <input className "flex p-5" placeHolder "Date Of Birth:"> </input>
+      <Input className="my-4" type="username" label="Username" value={username} onChange={onChangeUsername}></Input>
       <input className "flex p-5" placeHolder = "Username:"> </input>
     </div>
 );
