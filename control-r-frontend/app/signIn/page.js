@@ -1,5 +1,5 @@
 "use client"
-import { authentication } from "../../@/firebaseConfig";
+import { authentication } from "../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { useState } from "react";
 import Link from "next/link";
