@@ -10,13 +10,6 @@ admin.initializeApp({
 
 const port = process.env.PORT || 2020;
 
-// admin.app().firestore().collection('Users').get().then((snapshot) => {
-//   snapshot.forEach((doc) => {
-//     console.log(doc.id, '=>', doc.data());
-//   });
-//   return snapshot;
-// }
-// );
 app.listen(port, () => {
   
   /* eslint-disable no-console */
