@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { authentication } from "../firebaseConfig";
 import {
   Navbar,
   NavbarBrand,
@@ -13,19 +12,21 @@ import {
   NavbarMenuItem,
   Avatar
 } from "@nextui-org/react";
-import { authentication } from "../@/firebaseConfig";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
 
   const [menuItems, setMenuItems] = React.useState(["Leaderboard"]);
   React.useEffect(() => {
-    if (authentication.currentUser) {
+    const data = localStorage.getItem("loggedIn")
+    setIsLoggedIn(JSON.parse(data))
+    if (data) {
       setMenuItems(["Profile", "Leaderboard", "Certifications", "Calendar"]);
     } else {
       setMenuItems(["Leaderboard"]);
     }
-  }, [authentication.currentUser]);
+  }, []);
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -42,7 +43,7 @@ export default function App() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {authentication.currentUser ? (
+        {isLoggedIn ? (
           <>
             <NavbarItem>
               <Link color="foreground" href="./certifications">
@@ -64,6 +65,15 @@ export default function App() {
                 Profile
               </Link>
             </NavbarItem>
+            <NavbarItem>
+              <Link color="foreground" className="text-red-600" onClick={(e) => {
+                e.preventDefault()
+                setIsLoggedIn(false)
+                localStorage.setItem('loggedIn', false)
+              }}>
+                Log Out
+              </Link>
+            </NavbarItem>
           </>
         ) : (
           <>
@@ -75,7 +85,7 @@ export default function App() {
           </>
         )}
       </NavbarContent>
-      {authentication.currentUser ? (
+      {isLoggedIn ? (
         <NavbarContent justify="end">
           <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
         </NavbarContent>
@@ -114,79 +124,3 @@ export default function App() {
     </Navbar>
   );
 }
-
-// import React from "react";
-// import { authentication } from "../@/firebaseConfig";
-// import {
-//   Navbar,
-//   NavbarBrand,
-//   NavbarContent,
-//   NavbarItem,
-//   Link,
-//   Avatar,
-//   Button,
-// } from "@nextui-org/react";
-
-// export default function Nav() {
-//   return (
-//     <Navbar>
-//       <NavbarBrand>
-//         <p className="font-bold text-inherit">
-//           <Link color="foreground" href="/">
-//             CTRL-R{" "}
-//           </Link>
-//         </p>
-//       </NavbarBrand>
-//       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-//         {authentication.currentUser ? (
-//           <>
-//             <NavbarItem>
-//               <Link color="foreground" href="#">
-//                 Certifications
-//               </Link>
-//             </NavbarItem>
-//             <NavbarItem isActive>
-//               <Link href="./leaderboard" aria-current="page">
-//                 Leaderboard
-//               </Link>
-//             </NavbarItem>
-//             <NavbarItem>
-//               <Link color="foreground" href="./calendar">
-//                 Calendar
-//               </Link>
-//             </NavbarItem>
-//             <NavbarItem>
-//               <Link color="foreground" href="#">
-//                 Profile
-//               </Link>
-//             </NavbarItem>
-//           </>
-//         ) : (
-//           <>
-//             <NavbarItem isActive>
-//               <Link href="./leaderboard" aria-current="page">
-//                 Leaderboard
-//               </Link>
-//             </NavbarItem>
-//           </>
-//         )}
-//       </NavbarContent>
-//       {authentication.currentUser ? (
-//         <NavbarContent justify="end">
-//             <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
-//         </NavbarContent>
-//       ) : (
-//         <NavbarContent justify="end">
-//           <NavbarItem className="hidden lg:flex">
-//             <Link href="/signIn">Login</Link>
-//           </NavbarItem>
-//           <NavbarItem>
-//             <Button as={Link} color="primary" href="./signUp" variant="flat">
-//               Sign Up
-//             </Button>
-//           </NavbarItem>
-//         </NavbarContent>
-//       )}
-//     </Navbar>
-//   );
-// }

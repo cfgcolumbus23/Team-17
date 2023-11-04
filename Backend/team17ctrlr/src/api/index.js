@@ -1,5 +1,5 @@
 const express = require('express');
-
+//used to test each of our endpoints
 const profile = require('./profileControl/profile');
 const points = require ('./incentiveControl/incentive');
 

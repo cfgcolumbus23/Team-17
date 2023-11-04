@@ -20,7 +20,7 @@ router.post('/', (req, res) =>   {
         res.send("Error: data is undefined");
         return;
     }
- 
+    //Get user and update points to default settings
     admin.app().firestore().collection('Users').doc(uid).set(data).then((snapshot) => {
         console.log("Document successfully created!");
 
