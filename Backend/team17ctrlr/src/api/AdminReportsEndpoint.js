@@ -2,33 +2,40 @@ const express = require('express');
 
 const router = express.Router();
 
-//const apik = require("./apiKey")
-
 var admin = require("firebase-admin");
+//try-catch to get adminReports
+router.get('/adminReports', async (req, res) => {
+  try {
+    const result = await admin.app().firestore().collection("Users").listDocuments();
 
-  router.get('/adminReports', async (req, res) => {
-    var result = await admin.app().firestore().collection("Users").listDocuments();
-    
-    if (!result) {
-        res.statusCode = 400;
-        res.send("Error: No user data found");
-        return;
+    if (!result || result.length === 0) {
+      res.status(400).send("Error: No user data found");
+      return;
     }
-    var objArray = [];
-        for (let i in result) { 
+    //Map the results for the Users, Points, and Certificates so the front end can iterate the information to the admin
+    const userPromises = result.map(async (doc) => {
+      const snapshot = await admin.app().firestore().collection('Users').doc(doc.id).get();
+      const pounts = await admin.app().firestore().collection('Points').doc(doc.id).get();
+      const certificate = await admin.app().firestore().collection('Certificates').doc(doc.id).get();
 
 
-          // if (i.id){
-            var object = {
-                user: admin.app().firestore().collection('Users').doc(i.id),
-                points: admin.app().firestore().collection('Points').doc(i.id),
-                certificates: admin.app().firestore().collection('Certificates').doc(i.id)
-            }
-          // }
-        objArray.push(object);
-    }
-  return objArray;
+      const users = snapshot.data();
+      console.log(users);
+      return {
+        id: doc.id,
+        user: users,
+        points: pounts.data(),
+        certificate: certificate.data()
+      };
+    });
+    //wait for the completion of the operation and then output the array
+    const objArray = await Promise.all(userPromises);
+
+    res.json(objArray);
+  } catch (error) {
+    console.error("Error in adminReports:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
-  
 
 module.exports = router;

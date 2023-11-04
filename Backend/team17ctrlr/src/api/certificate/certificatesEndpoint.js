@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const apik = require("./apiKey")
+// const apik = require("./apiKey")
 
 var admin = require("firebase-admin");
 
