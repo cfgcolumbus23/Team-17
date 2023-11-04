@@ -1,11 +1,14 @@
+import React from 'react';
+import UserProfile from './UserProfile';
+
 export default function Certificate() {
-    return (
-        <div>
-          <label Here is your certificate ></label>
-          <input className = "flex p-5" placeHolder= "Date:"> </input>
-          <input className = "flex p-5" placeHolder ="Awarded to:"> </input>
-          <input className="flex p-5" placeHolder = "Authenticated by:"> </input>
-          <input className= "flex p-5" placeHolder = "Your course: "> </input>
-         </div>
-    );
-    }
+  const currentDate = new Date().toLocaleDateString();
+
+  return (
+    <div>
+      <h1>Certificate of Completion</h1>
+      <UserProfile />
+      <p>This is to certify that <span id="name"></span> has successfully completed the course on {currentDate}.</p>
+    </div>
+  );
+}
