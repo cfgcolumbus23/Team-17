@@ -1,4 +1,6 @@
 "use client"
+import { authentication } from "@/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth"
 import { useState } from "react";
 import Link from "next/link";
 import { Input } from "@nextui-org/react";
@@ -17,9 +19,22 @@ export default function SignUp() {
   }
 
   var signIn = async () => {
-    var data = await fetch("/signIn")
-    var json = await data.json() 
-    return json
+    signInWithEmailAndPassword(authentication, email, password).then(async (userCredential) => {
+      const userID = userCredential.user;
+      var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/getUser/${userID.uid}`)
+      var json = await data.json()
+      console.log(userID.uid)
+      console.log(firebase.auth().currentUser)
+      return json
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+
+
+    
     
   }
 
