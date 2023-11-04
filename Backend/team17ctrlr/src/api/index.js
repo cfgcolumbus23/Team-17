@@ -8,6 +8,8 @@ const certificate = require('./certificate/certificatesEndpoint');
 const adminReports = require('./AdminReportsEndpoint')
 
 
+const leaderboard = require('./leaderboardControl/leaderboard');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -23,6 +25,9 @@ router.use('/certificate', certificate);
 
 router.use('/adminReport', adminReports);
 
+
+
+router.use('/leaderboard', leaderboard);
 
 
 
