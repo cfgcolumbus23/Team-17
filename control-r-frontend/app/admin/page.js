@@ -6,14 +6,12 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 
 import { Card, CardBody } from "@nextui-org/react";
 
-
-
-
 export default function App() {
     const [certifications, setCertifications] = useState([])
     const [array, setArray] = useState([])
     var getCertifications = async () => {
-        var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/getCertifications`)
+        // var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/certifications/getCertifications`)
+        var data = await fetch(`http://localhost:2020/api/v1/certifications/getCertifications`)
         var jsonData = await data.json()
         setCertifications(jsonData)
     }
@@ -21,6 +19,7 @@ export default function App() {
         var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/adminEndpoint`)
         var jsonData = await data.json()
         setArray(jsonData)
+        console.log(array)
     }
 
     useEffect(() => {
@@ -56,8 +55,8 @@ export default function App() {
                                     defaultValue={["buenos-aires", "london"]}
 
                                 >
-                                    {item.certifications.map((cert) => (
-                                        <Checkbox  value={cert.name} >{cert.name}</Checkbox>
+                                    {certifications.map((cert) => (
+                                        <Checkbox value={cert.name} >{cert.category} - {cert.name}</Checkbox>
                                     ))}
 
 
