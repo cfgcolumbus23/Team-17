@@ -5,6 +5,7 @@ const points = require ('./incentiveControl/incentive');
 
 const certificate = require('./certificate/certificatesEndpoint');
 
+const certifications = require('./certifications')
 
 const router = express.Router();
 
@@ -19,6 +20,6 @@ router.use('/incentive', points);
 
 router.use('/certificate', certificate);
 
-
+router.use("/certifications", certifications)
 
 module.exports = router;
