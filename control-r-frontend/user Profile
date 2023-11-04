@@ -1,17 +1,79 @@
+"use client"
+import React, { useState } from 'react';
+import { Input } from "@nextui-org/react";
+import { Button, ButtonGroup } from "@nextui-org/react";
+export default function UserProfile() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [date, setDate] = useState('');
+  const [username, setUsername] = useState('');
 
-export default function userProfile() {
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
 
-return (
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangeDate = (e) => {
+    setDate(e.target.value);
+  };
+
+  const onChangeUsername = (e) => {
+    setUsername(e.target.value);
+  };
+
+  {/* Submit function that is going to take all of the state variables
+    and pass them into an API request e.g fetch("/path")   */}
+  return (
     <div>
       <label>User Profile</label>
-      <Input className="my-4" type="name" label="Name" value={name} onChange={onChangeName}></Input>
-      <input className="flex p-5" placeHolder = "Full Name:"> </input>
-      <Input className="my-4" type="email" label="Email" value={email} onChange={onChangeEmail}></Input>
-      <input className "flex p-5" placeHolder = "Email address:"> </input>
-      <Input className="my-4" type="date" label="Date" value={date} onChange={onChangeDate}></Input>
-      <input className "flex p-5" placeHolder "Date Of Birth:"> </input>
-      <Input className="my-4" type="username" label="Username" value={username} onChange={onChangeUsername}></Input>
-      <input className "flex p-5" placeHolder = "Username:"> </input>
+      <div className="my-4">
+        <label htmlFor="name">Name:</label>
+        <Input
+          type="text"
+          id="name"
+          value={name}
+          onChange={onChangeName}
+        />
+      </div>
+
+      <div className="my-4">
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={onChangeEmail}
+        />
+      </div>
+
+      <div className="my-4">
+        <label htmlFor="date">Date</label>
+        <input
+          type="date"
+          id="date"
+          value={date}
+          onChange={onChangeDate}
+        />
+      </div>
+
+      <div className="my-4">
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          value={username}
+          onChange={onChangeUsername}
+        />
+      </div>
+      <Input type="date" placeholder="Date of Birth" />
+      {
+      /* Button here that saves our changes to the user profile */
+      
+      }
     </div>
-);
+  );
+}
 }
