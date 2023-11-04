@@ -5,6 +5,7 @@ const points = require ('./incentiveControl/incentive');
 
 const certificate = require('./certificate/certificatesEndpoint');
 
+const certifications = require('./certifications')
 const adminReports = require('./AdminReportsEndpoint')
 
 
@@ -33,6 +34,6 @@ router.use('/leaderboard', leaderboard);
 
 router.use('/verify', verify)
 
-
+router.use("/certifications", certifications)
 
 module.exports = router;

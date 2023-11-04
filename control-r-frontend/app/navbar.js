@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { authentication } from "../firebaseConfig";
 import {
   Navbar,
   NavbarBrand,
