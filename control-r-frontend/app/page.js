@@ -73,7 +73,7 @@ Our comprehensive programs can open doors to entry-level IT positions in a rapid
           <div class="w-full md:w-1/3 px-2 mb-4">
             <div class="bg-white rounded shadow py-2">
               <p class="text-gray-800 text-base px-6 mb-5">CTRL-R has helped my kids learn many skills. Seeing them motivated to learn makes me so happy!</p>
-              <p class="text-gray-500 text-xs md:text-sm px-6">Jane Doe</p>
+              <p class="text-gray-500 text-xs md:text-sm px-6">Divya Reen</p>
             </div>
             
           </div>
