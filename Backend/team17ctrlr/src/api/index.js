@@ -1,6 +1,7 @@
 const express = require('express');
 
 const profile = require('./profileControl/profile');
+const points = require ('./incentiveControl/createIncentive');
 
 
 const router = express.Router();
@@ -12,5 +13,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/profile', profile);
+router.use('/incentive', points);
 
 module.exports = router;
