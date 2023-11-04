@@ -1,9 +1,9 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
+import { authentication } from "../../@/firebaseConfig";
 import Link from "next/link";
 import { createUserWithEmailAndPassword } from "firebase/auth"
-import { authentication } from "@/firebaseConfig";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
 
