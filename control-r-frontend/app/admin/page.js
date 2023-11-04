@@ -10,14 +10,14 @@ export default function App() {
     const [certifications, setCertifications] = useState([])
     const [array, setArray] = useState([])
     var getCertifications = async () => {
-        // var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/certifications/getCertifications`)
-        var data = await fetch(`http://localhost:2020/api/v1/certifications/getCertifications`)
+        var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/certifications/getCertifications`)
+        // var data = await fetch(`http://localhost:2020/api/v1/certifications/getCertifications`)
         var jsonData = await data.json()
         setCertifications(jsonData)
     }
     var getUsers = async () => {
-        // var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/adminEndpoint`)
-        var data = await fetch(`http://localhost:2020/api/v1/adminReport/adminReports`)
+        var data = await fetch(`http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/adminReport/adminReports`)
+        // var data = await fetch(`http://localhost:2020/api/v1/adminReport/adminReports`)
         var jsonData = await data.json()
         setArray(jsonData)
     }
