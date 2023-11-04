@@ -87,7 +87,7 @@ export default function App() {
       </NavbarContent>
       {isLoggedIn ? (
         <NavbarContent justify="end">
-          <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
+          <Avatar src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*" />
         </NavbarContent>
       ) : (
         <NavbarContent justify="end">
