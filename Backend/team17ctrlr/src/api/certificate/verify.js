@@ -8,7 +8,7 @@ router.post('/requestVerification', (req, res) => {
     console.log(req.body)
     var uid = req.body.uid
     var certificationID = req.body.certification
-
+    //Check that the uid and certificationID exists
     if (!uid) {
         res.statusCode = 400;
         res.send("Error: uid is undefined");
@@ -20,6 +20,7 @@ router.post('/requestVerification', (req, res) => {
         res.send("Error: modified is undefined");
         return;
     }
+    //Add pending status to Verifications when request is sent
     var data = {status: "Pending", uid: uid, certificationID: certificationID}
     admin.app().firestore().collection('Verifications').doc(uid).set(data).then((snapshot) => {
         console.log("Document successfully created!");
@@ -43,7 +44,7 @@ router.post('/requestVerification', (req, res) => {
     })
 })
 
-
+//Approve verification function for admin for approval of user certifications
 router.post('/approveVerification', (req, res) => { 
     var uid = req.body.uid
     var certificationID = req.body.uid
@@ -59,7 +60,7 @@ router.post('/approveVerification', (req, res) => {
         res.send("Error: uid is undefined");
         return;
     }
-
+    //Update status to verified
     var data = {status: "Verified", uid: uid, certificationID: certificationID}
     admin.app().firestore().collection('Verifications').doc(uid).set(data).then((snapshot) => {
         console.log("Document successfully Modified!");

@@ -2,7 +2,7 @@ var admin = require("firebase-admin");
 const express = require('express');
 const  router = express.Router();
 
-
+//Request XP from database and update XP, level, and TotalPoints
 router.post('/', async (req,res) => {
     const reqxp = parseInt(req.body.xp);
 

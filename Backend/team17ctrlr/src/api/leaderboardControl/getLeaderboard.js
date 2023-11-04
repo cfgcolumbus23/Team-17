@@ -23,13 +23,13 @@ var admin = require("firebase-admin");
         res.send("Error querying points ", error);
     });
 }); */
-
+//method to get and sort users based on level
 router.get('/', async (req, res) => {
     try {
         // Get results ordered by level descending
         const collectionRef = await admin.app().firestore().collection('Points').listDocuments();
         if (!collectionRef || collectionRef.length == 0) {
-            res.status(400).send("Error: No user data found");
+            res.status(400).send("Error: No Points data found");
             return;
         }
         const db = admin.app().firestore();
@@ -50,6 +50,7 @@ router.get('/', async (req, res) => {
                 totalPoints: points.totalPoints
             }
         });
+        //ObjArray to get sort Order
         const objArray = await Promise.all(userPromises);
         console.log(objArray);
         //Comparer Function    
