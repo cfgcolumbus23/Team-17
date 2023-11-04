@@ -20,11 +20,8 @@ router.get('/adminReports', async (req, res) => {
       const certificate = await admin.app().firestore().collection('Certificates').doc(doc.id).get();
 
       //If the user's status is pending, we'll notify the admin that verification is needed
-      //res.send(status);
       var pending = false;
       if(status){
-        //console.log(status.status);
-        //status.status = "Pending";
         if(status.status == "Pending"){
           pending = true;
         }
