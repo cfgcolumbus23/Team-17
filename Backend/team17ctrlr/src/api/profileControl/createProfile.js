@@ -4,8 +4,6 @@ const router = express.Router();
 
 var admin = require("firebase-admin");
 
-const api = require('../certificate/apiKey');
-api.apiKey;
 router.post('/', (req, res) =>   {
     const uid = req.body.uid;
     const data = req.body.data;
@@ -25,6 +23,19 @@ router.post('/', (req, res) =>   {
  
     admin.app().firestore().collection('Users').doc(uid).set(data).then((snapshot) => {
         console.log("Document successfully created!");
+
+        admin.firestore().collection('Points').doc(uid).update({'xp':100, 'level':1, 'totalPoints': 1000}).then((snapshot) =>
+        {
+            console.log("Incentive updated successfully");
+            res.send("Incentive updated successfully");
+            return snapshot;
+        }
+    ).catch((error)=> {
+        console.log("Error updating incentive" , error);
+        res.send("Error updating incentive", error);
+    })
+
+        
 
         res.send("Document successfully created!");
 
