@@ -24,7 +24,7 @@ router.post('/', (req, res) =>   {
     admin.app().firestore().collection('Users').doc(uid).set(data).then((snapshot) => {
         console.log("Document successfully created!");
 
-        admin.firestore().collection('Points').doc(uid).update({'xp':100, 'level':1, 'totalPoints': 1000}).then((snapshot) =>
+        admin.firestore().collection('Points').doc(uid).set({'xp':100, 'level':1, 'totalPoints': 1000}).then((snapshot) =>
         {
             console.log("Incentive updated successfully");
             res.send("Incentive updated successfully");
