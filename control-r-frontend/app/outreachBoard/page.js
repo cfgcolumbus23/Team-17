@@ -12,7 +12,7 @@ export default function OutreachBoard() {
     return (
         <div className="flex w-full h-full justify-center items-center">
             <div className="p-3 flex-col w-1/2 justify-center">
-                <p className="flex text-xl font-bold p-4">Related Groups:</p>
+                <p className="flex text-xl font-bold p-3 justify-center items-center">Related Groups:</p>
                     <table>
                         <thead>
                             <tr>
