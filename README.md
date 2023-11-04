@@ -15,3 +15,8 @@ CTRL-R has an admin page, as well as a general user page. The admin page allows 
 NGOs and administrators also have access to a community calendar where they can plan events, provide virtual links, and communicate to the whole CTRL-R community! There is also an outreach page where NGOs and other non profits can openly advertise their organizations and activities!
 
 We also have a welcoming home page with user testimonials, mission statements, and why they should get paid to come get educated!
+
+# Documentation
+
+## Endpoints
+
