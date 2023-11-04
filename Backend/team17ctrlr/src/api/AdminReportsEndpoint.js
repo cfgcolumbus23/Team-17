@@ -16,6 +16,7 @@ router.get('/adminReports', async (req, res) => {
     const userPromises = result.map(async (doc) => {
       const snapshot = await admin.app().firestore().collection('Users').doc(doc.id).get();
       const pounts = await admin.app().firestore().collection('Points').doc(doc.id).get();
+      const status = await admin.app().firestore().collection('Verifications').doc(doc.id).get();
       const certificate = await admin.app().firestore().collection('Certificates').doc(doc.id).get();
 
 
@@ -25,6 +26,7 @@ router.get('/adminReports', async (req, res) => {
         id: doc.id,
         user: users,
         points: pounts.data(),
+        status: status.data() ? status.data().status : "Not Verified",
         certificate: certificate.data()
       };
     });
