@@ -1,6 +1,8 @@
 "use client"
 import { useState } from "react";
 import Link from "next/link";
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { authentication } from "@/firebaseConfig";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
 
@@ -30,22 +32,30 @@ export default function SignUp() {
   }
 
   var signUp = async () => {
-    var userData = {
+    createUserWithEmailAndPassword(authentication, email, password).then(async (userCredential) => {
+      const user = userCredential.user;
+      var userData = {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        userID: UID,
         username: username
     }
-    var response = await fetch("/signUp", {
+    var response = await fetch("http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/profile/createProfile", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
-        body: JSON.stringify(userData),
+        body: JSON.stringify({"uid":user.uid, "data":userData}),
     })
     return response.json();
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+    
     
   }
 
