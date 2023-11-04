@@ -5,9 +5,9 @@ const router = express.Router();
 var admin = require("firebase-admin");
 
 router.post('/requestVerification', (req, res) => { 
-    console.log("request")
+    console.log(req.body)
     var uid = req.body.uid
-    var certificationID = req.body.certificationID
+    var certificationID = req.body.certification
 
     if (!uid) {
         res.statusCode = 400;
@@ -44,29 +44,32 @@ router.post('/requestVerification', (req, res) => {
 })
 
 
-// router.post('/approveVerification', (req, res) => { 
-//     var uid = req.body.uid
-//     var certificationID = req.body.certificationID
+router.post('/approveVerification', (req, res) => { 
+    var uid = req.body.uid
+    var certificationID = req.body.uid
+    var certification = admin.app().firestore().collection('Certifications').doc(certificationID).get()
 
-//     if (!uid) {
-//         res.statusCode = 400;
-//         res.send("Error: uid is undefined");
-//         return;
-//     }
+    if (!certification) {
+        res.send("Error fetching certification");
+        return;    
+    }
 
-//     if (!certificationID) {
-//         res.statusCode = 400;
-//         res.send("Error: modified is undefined");
-//         return;
-//     }
-//     var data = {status: "Pending", uid: uid, certificationID: certificationID}
-//     admin.app().firestore().collection('Verifications').doc(uid).set(data).then((snapshot) => {
-//         console.log("Document successfully created!");
-//         return snapshot
+    if (!uid) {
+        res.statusCode = 400;
+        res.send("Error: uid is undefined");
+        return;
+    }
 
-//     })
-//     .catch((error)=> {
-//         console.log("Error updating verification" , error);
-//         res.send("Error updating verification", error);
-//     })
-// })
+    var data = {status: "Verified", uid: uid, certificationID: certificationID}
+    admin.app().firestore().collection('Verifications').doc(uid).set(data).then((snapshot) => {
+        console.log("Document successfully Modified!");
+        return snapshot
+
+    })
+    .catch((error)=> {
+        console.log("Error updating verification" , error);
+        res.send("Error updating verification", error);
+    })
+})
+
+module.exports = router;

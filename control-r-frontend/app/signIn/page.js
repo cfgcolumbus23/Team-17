@@ -23,7 +23,6 @@ const router = useRouter();
   }
   console.log(authentication)
   var signIn = async () => {
-    console.log(authentication)
     signInWithEmailAndPassword(authentication, email, password).then(async (userCredential) => {
       const userID = userCredential.user;
       var url = `http://ec2-3-82-130-200.compute-1.amazonaws.com:2020/api/v1/profile/getProfile/${userID.uid}`

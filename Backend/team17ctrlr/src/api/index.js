@@ -10,6 +10,8 @@ const adminReports = require('./AdminReportsEndpoint')
 
 const leaderboard = require('./leaderboardControl/leaderboard');
 
+const verify = require('./certificate/verify')
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -29,6 +31,7 @@ router.use('/adminReport', adminReports);
 
 router.use('/leaderboard', leaderboard);
 
+router.use('/verify', verify)
 
 
 
