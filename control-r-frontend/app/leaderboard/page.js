@@ -42,6 +42,10 @@ export default function Leaderboard() {
     <>
       <h1 className="text-3xl text-center m-8 font-bold">CTRL-R Leaderboard</h1>
       <div className="w-[60%] m-auto">
+        <img
+          className="w-32 h-32 m-auto"
+          src="https://cdn-icons-png.flaticon.com/512/3150/3150116.png"
+        />
         <Table isStriped aria-label="Example static collection table">
           <TableHeader>
             <TableColumn className="text-center">Level</TableColumn>
