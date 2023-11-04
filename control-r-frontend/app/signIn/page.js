@@ -1,5 +1,5 @@
 "use client"
-import { authentication } from "@/firebaseConfig";
+import { authentication } from "../../@/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { useState } from "react";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 
 
 export default function SignUp() {
+  // console.log(wauthentication)
   var [email, setEmail] = useState("")
   var [password, setPassword] = useState("")
 const router = useRouter();
@@ -21,7 +22,6 @@ const router = useRouter();
   var onChangePassword = (e) => {
     setPassword(e.target.value)
   }
-  console.log(authentication)
   var signIn = async () => {
     signInWithEmailAndPassword(authentication, email, password).then(async (userCredential) => {
       const userID = userCredential.user;
