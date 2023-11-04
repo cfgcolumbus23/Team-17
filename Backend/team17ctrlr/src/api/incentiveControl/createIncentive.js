@@ -7,14 +7,16 @@ router.post('/', async (req,res) => {
     const reqxp = parseInt(req.body.xp);
 
     console.log("REQUEST XP: " + reqxp);
-    //const uid = req.body.uid;
-    const uid = 'ir2Dd0EAsqc07zfAWQAQ';
+    const uid = req.body.uid;
+    //const uid = 'ir2Dd0EAsqc07zfAWQAQ';
+
+    //Gets the current results
     var result = await admin.app().firestore().collection('Points').doc(uid).get();
     //console.log(result);
 
     var xp = parseInt(result.data().xp) + reqxp;
     var level = result.data().level;
-    var totalPoints = result.data().totalPoints;
+    var totalPoints = result.data().totalPoints + reqxp;
 
     if(xp >= 2000){
         //Update xp and levels
@@ -27,7 +29,7 @@ router.post('/', async (req,res) => {
 
 
 
-
+    //Update database
     admin.firestore().collection('Points').doc(uid).update({'xp':xp, 'level':level, 'totalPoints':totalPoints}).then((snapshot) =>
         {
             console.log("Incentive updated successfully");

@@ -4,11 +4,11 @@ const router = express.Router();
 
 const createIncentive = require('./createIncentive');
 
-const editIncentive = require('./editIncentive');
+const getIncentive = require('./getIncentive');
 
 
 router.use('/createIncentive', createIncentive);
-router.use('/editIncentive', editIncentive);
+router.use('/editIncentive', getIncentive);
 
 router.get('/', (req, res) => {
     res.json({
