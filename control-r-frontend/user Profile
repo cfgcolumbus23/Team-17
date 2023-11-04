@@ -1,11 +1,69 @@
-export default function userProfile() {
-return (
+import React, { useState } from 'react';
+
+export default function UserProfile() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [date, setDate] = useState('');
+  const [username, setUsername] = useState('');
+
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangeDate = (e) => {
+    setDate(e.target.value);
+  };
+
+  const onChangeUsername = (e) => {
+    setUsername(e.target.value);
+  };
+
+  return (
     <div>
       <label>User Profile</label>
-      <input className="Full Name"> </input>
-      <input className = "Email address"> </input>
-      <input className = "Date Of Birth"> </input>
-      <input className = "Username"> </input>
+      <div className="my-4">
+        <label htmlFor="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={onChangeName}
+        />
+      </div>
+
+      <div className="my-4">
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={onChangeEmail}
+        />
+      </div>
+
+      <div className="my-4">
+        <label htmlFor="date">Date Of Birth:</label>
+        <input
+          type="date"
+          id="date"
+          value={date}
+          onChange={onChangeDate}
+        />
+      </div>
+
+      <div className="my-4">
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          value={username}
+          onChange={onChangeUsername}
+        />
+      </div>
     </div>
-);
+  );
 }
