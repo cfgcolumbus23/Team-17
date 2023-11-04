@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const apik = require("apiKey")
+const apik = require("./apiKey")
 
 var admin = require("firebase-admin");
 
@@ -35,6 +35,10 @@ router.post('/', (req, res) => {
 });
 // New route for generating certificates
 router.post('/generate-certificate', (req, res) => {
+
+  const name = req.body.name;
+
+
     fetch("https://api.bannerbear.com/v2/images", {
   method: "POST",
   body: JSON.stringify({
@@ -54,7 +58,7 @@ router.post('/generate-certificate', (req, res) => {
     },
     {
       "name": "awardee_name",
-      "text": "You can change this text",
+      "text": name,
       "color": null,
       "background": null
     },
@@ -92,7 +96,15 @@ router.post('/generate-certificate', (req, res) => {
   headers: {
     "Content-type": "application/json; charset=UTF-8"
   }
+}).then(response => {
+  res.send(response.json());
+}).catch(err => {
+  console.log(err);
+  res.statusCode = 400;
+  res.send(err);
 });
+
+
 
 });
 
