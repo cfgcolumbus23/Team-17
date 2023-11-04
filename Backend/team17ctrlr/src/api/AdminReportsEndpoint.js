@@ -16,15 +16,26 @@ router.get('/adminReports', async (req, res) => {
     const userPromises = result.map(async (doc) => {
       const snapshot = await admin.app().firestore().collection('Users').doc(doc.id).get();
       const pounts = await admin.app().firestore().collection('Points').doc(doc.id).get();
+      const status = await admin.app().firestore().collection('Verifications').doc(doc.id).get();
       const certificate = await admin.app().firestore().collection('Certificates').doc(doc.id).get();
 
-
+      //If the user's status is pending, we'll notify the admin that verification is needed
+      //res.send(status);
+      var pending = false;
+      if(status){
+        //console.log(status.status);
+        //status.status = "Pending";
+        if(status.status == "Pending"){
+          pending = true;
+        }
+      }
       const users = snapshot.data();
       console.log(users);
       return {
         id: doc.id,
         user: users,
         points: pounts.data(),
+        status: pending,
         certificate: certificate.data()
       };
     });
