@@ -1,0 +1,16 @@
+export default function Certificate() 
+    return 
+        <div>
+          <label Here is your certificate! ></label>
+          export default function userProfile() {
+
+            return (
+                <div>
+                   
+         <input className = "flex p-5" placeHolder= "Date:"> </input>
+          <input className = "flex p-5" placeHolder ="Awarded to:"> </input>
+          <input className="flex p-5" placeHolder = "Authenticated by:"> </input>
+          <input className= "flex p-5" placeHolder = "Your course: "> </input>
+         </div>
+    );
+    }
