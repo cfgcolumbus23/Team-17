@@ -1,0 +1,14 @@
+import React from 'react';
+import UserProfile from './UserProfile';
+
+export default function Certificate() {
+  const currentDate = new Date().toLocaleDateString();
+
+  return (
+    <div>
+      <h1>Certificate of Completion</h1>
+      <UserProfile />
+      <p>This is to certify that <span id="name"></span> has successfully completed the course on {currentDate}.</p>
+    </div>
+  );
+}
