@@ -20,7 +20,7 @@ router.post('/', async (req,res) => {
 
     if(xp >= 2000){
         //Update xp and levels
-        level = level + xp/2000;
+        level = Math.floor(level + xp/parseInt(2000));
 
         xp = xp % 2000;
     }

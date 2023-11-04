@@ -8,7 +8,7 @@ const getIncentive = require('./getIncentive');
 
 
 router.use('/createIncentive', createIncentive);
-router.use('/editIncentive', getIncentive);
+router.use('/getIncentive', getIncentive);
 
 router.get('/', (req, res) => {
     res.json({
