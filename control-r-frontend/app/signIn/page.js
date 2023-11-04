@@ -29,8 +29,9 @@ const router = useRouter();
       var data = await fetch(url)
       var json = await data.json()
 
-      router.replace('/pretest');
-  
+      localStorage.setItem('loggedIn',)
+      router.replace('./pretest');
+      window.location.reload();  
       return json
     })
     .catch((error) => {

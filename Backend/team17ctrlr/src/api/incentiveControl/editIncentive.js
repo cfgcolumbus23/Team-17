@@ -4,7 +4,7 @@ const router = express.Router();
 
 var admin = require("firebase-admin");
 
-
+//Request to edit incetive with updated uid, levels, xp, totalPoints
 router.post('/editIncentive', (req, res) =>   {
     const uid = req.body.uid;
     const levels = req.body.levels;

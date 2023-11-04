@@ -23,7 +23,7 @@ router.put('/editProfile', (req, res) =>   {
     }
     
     
-
+    //Allow user to update their profile
     admin.app().firestore().collection('Users').doc(uid).update(modified)
     .then((snapshot) => {
         res.send("Document successfully updated!");
