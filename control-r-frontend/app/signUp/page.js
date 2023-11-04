@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import Link from "next/link";
 import { createUserWithEmailAndPassword } from "firebase/auth"
@@ -12,6 +13,7 @@ export default function SignUp() {
   var [firstName, setFirstName] = useState("")
   var [lastName, setLastName] = useState("")
   var [password, setPassword] = useState("")
+  const router = useRouter();
 
   var onChangeEmail = (e) => {
     setEmail(e.target.value)
@@ -44,19 +46,18 @@ export default function SignUp() {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         body: JSON.stringify({"uid":user.uid, "data":userData}),
     })
-    return response.json();
+    router.replace('/pretest');
+
     })
     .catch((error) => {
+      console.log(error)
       const errorCode = error.code;
       const errorMessage = error.message;
       // ..
     });
-    
-    
   }
 
   return (
