@@ -1,10 +1,13 @@
 "use client"
+import { useRouter } from 'next/navigation';
 import { Button } from "@nextui-org/react"
 import Link from "next/link"
-import { authentication } from "@/firebaseConfig"
+import { authentication } from "../../@/firebaseConfig"
 export default function Pretest() {
+    const router = useRouter();
 
     var requestVerification = async () => {
+        router.replace('./certifications');
         // when this is triggered, send a request to the admin for verifications
         var data = {
             uid: authentication.currentUser.uid,
