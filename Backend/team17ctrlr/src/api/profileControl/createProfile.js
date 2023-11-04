@@ -4,7 +4,8 @@ const router = express.Router();
 
 var admin = require("firebase-admin");
 
-
+const api = require('../certificate/apiKey');
+api.apiKey;
 router.post('/', (req, res) =>   {
     const uid = req.body.uid;
     const data = req.body.data;
@@ -29,7 +30,9 @@ router.post('/', (req, res) =>   {
 
         return snapshot;
     }).catch((error) => {
+        
         console.error("Error creating document: ", error);
+        res.statusCode = 400;
         // 400 
         res.send("Error creating document: ", error);
     });
