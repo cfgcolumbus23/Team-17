@@ -36,14 +36,14 @@ export default function App() {
                             
 
                         <CheckboxGroup
-                            label="Which Certification has been Completed"
+                            label="Which Certification has been Completed?"
                             defaultValue={["buenos-aires", "london"]}
 
                         >
 
-                            <Checkbox  value="IC3 Digital Literacy" >  IC3 Digital Literacy</Checkbox>
+                            <Checkbox className="font-bold"  value="IC3 Digital Literacy" >  IC3 Digital Literacy</Checkbox>
 
-                            <Checkbox value="Digital Literacy Assessment"  > Digital Literacy Assessment</Checkbox>
+                            <Checkbox className="font-bold" value="Digital Literacy Assessment"  > Digital Literacy Assessment</Checkbox>
 
                         </CheckboxGroup>
 

@@ -48,6 +48,7 @@ export default function Leaderboard() {
         />
         <Table isStriped aria-label="Example static collection table">
           <TableHeader>
+            <TableColumn className="text-center">Username</TableColumn>
             <TableColumn className="text-center">Level</TableColumn>
             <TableColumn className="text-center">XP</TableColumn>
             <TableColumn className="text-center">Total Points</TableColumn>
@@ -55,6 +56,7 @@ export default function Leaderboard() {
           <TableBody>
             {dummyArr.map((ele, ind) => (
               <TableRow key={ind}>
+                <TableCell className="text-center">{ele.username}</TableCell>
                 <TableCell className="text-center">{ele.level}</TableCell>
                 <TableCell className="text-center">{ele.xp}</TableCell>
                 <TableCell className="text-center">{ele.totalPoints}</TableCell>
