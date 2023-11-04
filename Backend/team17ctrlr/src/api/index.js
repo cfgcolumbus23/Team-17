@@ -1,7 +1,7 @@
 const express = require('express');
 
 const profile = require('./profileControl/profile');
-const points = require ('./incentiveControl/createIncentive');
+const points = require ('./incentiveControl/incentive');
 
 
 const router = express.Router();
